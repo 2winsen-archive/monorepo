@@ -25,6 +25,7 @@ const ForkTsCheckerWebpackPlugin =
     ? require('react-dev-utils/ForkTsCheckerWarningWebpackPlugin')
     : require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
@@ -746,6 +747,21 @@ module.exports = function (webpackEnv) {
               }),
             },
           },
+        }),
+        new ModuleFederationPlugin({
+          name: "shell",
+          library: { type: "var", name: "shell" },
+          remotes: {
+            rfq: "rfq",
+            "shared-ui-components": "shared-ui-components",
+          },
+          shared: [
+            {
+              react: { eager: true, singleton: true },
+              "react-dom": { eager: true, singleton: true },
+              "react-router-dom": { eager: true, singleton: true },
+            },
+          ],
         }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize

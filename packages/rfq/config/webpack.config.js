@@ -25,6 +25,7 @@ const ForkTsCheckerWebpackPlugin =
     ? require('react-dev-utils/ForkTsCheckerWarningWebpackPlugin')
     : require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
@@ -746,6 +747,22 @@ module.exports = function (webpackEnv) {
               }),
             },
           },
+        }),
+        new ModuleFederationPlugin({
+          name: "rfq",
+          library: { type: "var", name: "rfq" },
+          filename: "rfq.js",
+          exposes: {
+            "./Rfq": "../src/Rfq"
+          },
+          // make dependencies eager for preview to work
+          shared: [
+            {
+              react: { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
+              "react-dom": { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
+              "react-router-dom": { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
+            },
+          ],          
         }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
