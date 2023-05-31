@@ -2,7 +2,7 @@ import React from 'react';
 
 function Component() {
   return (
-    <div style={{backgroundColor: 'navy', flex: '1'}}>
+    <div style={{backgroundColor: 'goldenrod', flex: '1'}}>
       Shared-ui-components
     </div>
   );

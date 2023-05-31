@@ -750,16 +750,12 @@ module.exports = function (webpackEnv) {
         }),
         new ModuleFederationPlugin({
           name: "shell",
-          library: { type: "var", name: "shell" },
           remotes: {
-            rfq: "rfq",
-            "shared-ui-components": "shared-ui-components",
+            app2: "app2@http://localhost:3002/remoteEntry.js",
           },
           shared: [
             {
-              react: { eager: true, singleton: true },
-              "react-dom": { eager: true, singleton: true },
-              "react-router-dom": { eager: true, singleton: true },
+              react: { singleton: true },
             },
           ],
         }),

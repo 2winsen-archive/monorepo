@@ -749,18 +749,14 @@ module.exports = function (webpackEnv) {
           },
         }),
         new ModuleFederationPlugin({
-          name: "shared-ui-components",
-          library: { type: "var", name: "shared-ui-components" },
-          filename: "shared-ui-components.js",
+          name: "shared_ui_components",
+          filename: 'remoteEntry.js',
           exposes: {
-            "./Component": "../src/Component"
+            "./Component": "./src/Component"
           },
-          // make dependencies eager for preview to work
           shared: [
             {
-              react: { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
-              "react-dom": { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
-              "react-router-dom": { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
+              react: { singleton: true },
             },
           ],          
         }),

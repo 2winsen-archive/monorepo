@@ -1,7 +1,6 @@
-// @ts-no-check
+// @ts-nocheck
 import React from 'react';
-const Rfq = React.lazy(() => import('rfq/Rfq'));
-const Component = React.lazy(() => import('shared-ui-components/Component'));
+const Rfq = React.lazy(() => import('app2/Rfq'));
 
 function App() {
   return (
@@ -9,9 +8,6 @@ function App() {
       <div style={{ flex: 1, backgroundColor: 'coral' }}>Shell</div>
       <React.Suspense fallback="LOADING Rfq">
         <Rfq />
-      </React.Suspense>
-      <React.Suspense fallback="LOADING Shared-ui-components">
-        <Component />
       </React.Suspense>
     </div>
   );

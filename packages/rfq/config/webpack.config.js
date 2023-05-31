@@ -749,18 +749,14 @@ module.exports = function (webpackEnv) {
           },
         }),
         new ModuleFederationPlugin({
-          name: "rfq",
-          library: { type: "var", name: "rfq" },
-          filename: "rfq.js",
+          name: "app2",
+          filename: 'remoteEntry.js',
           exposes: {
-            "./Rfq": "../src/Rfq"
+            "./Rfq": "./src/Rfq"
           },
-          // make dependencies eager for preview to work
           shared: [
             {
-              react: { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
-              "react-dom": { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
-              "react-router-dom": { eager: process.env.WITH_PREVIEWS === "1", singleton: true },
+              react: { singleton: true },
             },
           ],          
         }),
