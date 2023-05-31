@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  shell:
+    image: nginx:1.25.0
+    ports:
+      - 3000:80
+    volumes:
+      - ./packages/shell/build:/usr/share/nginx/html
+  rfq:
+    image: nginx:1.25.0
+    ports:
+      - 3002:80
+    volumes:
+      - ./packages/rfq/build:/usr/share/nginx/html
+  shared_ui_components:
+    image: nginx:1.25.0
+    ports:
+      - 3001:80
+    volumes:
+      - ./packages/shared-ui-components/build:/usr/share/nginx/html
