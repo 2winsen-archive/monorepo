@@ -4,15 +4,10 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
-          "build",
-          "test"
+          "build"
         ]
       }
     }
-  },
-  "namedInputs": {
-    "all": ["{projectRoot}/**/*"],
-    "public": ["!{projectRoot}/**/*.test.*"]
   },
   "defaultBase": "master"
 }
