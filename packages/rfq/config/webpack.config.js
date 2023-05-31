@@ -749,7 +749,7 @@ module.exports = function (webpackEnv) {
           },
         }),
         new ModuleFederationPlugin({
-          name: "app2",
+          name: "rfq",
           filename: 'remoteEntry.js',
           exposes: {
             "./Rfq": "./src/Rfq"
@@ -757,6 +757,7 @@ module.exports = function (webpackEnv) {
           shared: [
             {
               react: { singleton: true },
+              'react-dom': { singleton: true },
             },
           ],          
         }),

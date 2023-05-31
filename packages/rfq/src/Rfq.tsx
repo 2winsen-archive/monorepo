@@ -2,8 +2,8 @@ import React from 'react';
 
 function Rfq() {
   return (
-    <div style={{backgroundColor: 'lime', flex: '1'}}>
-      Rfq
+    <div style={{backgroundColor: '#19A7CE', flex: '1'}}>
+      <h1>Rfq</h1>
     </div>
   );
 }

@@ -757,8 +757,9 @@ module.exports = function (webpackEnv) {
           shared: [
             {
               react: { singleton: true },
+              'react-dom': { singleton: true },
             },
-          ],          
+          ],              
         }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize

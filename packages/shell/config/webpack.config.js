@@ -751,13 +751,15 @@ module.exports = function (webpackEnv) {
         new ModuleFederationPlugin({
           name: "shell",
           remotes: {
-            app2: "app2@http://localhost:3002/remoteEntry.js",
+            rfq: "rfq@http://localhost:3002/remoteEntry.js",
+            shared_ui_components: "shared_ui_components@http://localhost:3001/remoteEntry.js",
           },
           shared: [
             {
               react: { singleton: true },
+              'react-dom': { singleton: true },
             },
-          ],
+          ],      
         }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
